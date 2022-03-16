@@ -1,0 +1,152 @@
+﻿@using CarSystem.Helping_Classes
+@using CarSystem.Models
+@using CarSystem.BL
+
+@{
+    DatabaseEntities de = new DatabaseEntities();
+    GeneralPurpose gp = new GeneralPurpose();
+    ViewBag.CDLotMakelist = new CarDetailBL().GetActiveCarDetailList(de).ToList().Select(x => x.LotMake).Distinct();
+}
+
+
+<div class="card-deck mb-3">
+    <div class="card mb-4 shadow-sm custom-padding">
+        <div class="row p-3">
+            <div class="col-md-6">
+                <div class="row text-center">
+                    <div class="col-md-12">
+                        <img src="~/Content/Frontassets/images/OfferForm/04.png" class="image-size" />
+                    </div>
+                    <div class="col-md-12">
+                        <img src="~/Content/Frontassets/images/car-img-03.png" class="image-size" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h3 class="text-center">Get Instant Offer</h3>
+
+                @*<div class="form-group">
+            <label class="control-label">Does it have a key and a working battery?</label>
+            <div class="custom-control custom-radio">       value="It has a key and the battery is installed and functioning"
+                <input type="radio" id="KeyBattery1" value="Y" name="KeyBattery" class="custom-control-input" onchange="KeyBatterys(1)">
+                <label class="custom-control-label" for="KeyBattery1">It has a key and the battery is installed and functioning</label>
+            </div>
+
+            <div class="custom-control custom-radio">    value="It is missing the key and/or the battery is missing or dead"
+                <input type="radio" id="KeyBattery2" value="N" name="KeyBattery" class="custom-control-input" onchange="KeyBatterys(2)">
+                <label class="custom-control-label" for="KeyBattery2">It is missing the key and/or the battery is missing or dead</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">Does it drive?</label>
+            <div class="custom-control custom-radio">
+                <input type="radio" id="Drive1" value="D - DRIVES" name="Drive" class="custom-control-input">
+                <label class="custom-control-label" for="Drive1">It starts and drive</label>
+            </div>
+
+            <div class="custom-control custom-radio">
+                <input type="radio" id="Drive2" value="S - STARTS" name="Drive" class="custom-control-input">
+                <label class="custom-control-label" for="Drive2">It starts but does not drive</label>
+            </div>
+
+            <div class="custom-control custom-radio">
+                <input type="radio" id="Drive3" value="N - NO" name="Drive" class="custom-control-input">
+                <label class="custom-control-label" for="Drive3">It does not start</label>
+            </div>
+        </div>*@
+
+                <div class="form-group">
+                    <label class="control-label">Select Transmission type <span class="text-danger">*</span></label>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="automatic" value="Automatic" name="TransmissionType" class="custom-control-input">
+                        <label class="custom-control-label" for="automatic">Automatic</label>
+                    </div>
+
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="manual" value="Manual" name="TransmissionType" class="custom-control-input">
+                        <label class="custom-control-label" for="manual">Manual</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">Select Fuel type <span class="text-danger">*</span></label>
+                    <select class="custom-select" name="fuelType" id="fuelType">
+
+                        <option selected value="">Open this select menu</option>
+
+                        <option value="Gasoline">Gasoline</option>
+                        <option value="Diesel">Diesel</option>
+                        <option value="Hybrid">Hybrid</option>
+                        <option value="Flex">Flex</option>
+
+                    </select>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-6 col-sm-6">
+                        <a onclick="PreviousPage(4)" class="text-danger"><span class="angle_arrow"><i class="fa fa-arrow-left" aria-hidden="true"></i></span> Back </a>
+                    </div>
+                    <div class="col-md-6 col-sm-6 ">
+                        <a onclick="NextPage(4)" class="float-right text-danger"> Next <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function KeyBatterys(id) {
+
+
+        @*function SelectLotYear(lotYear) {
+
+        var lotMake = document.getElementById("MakeofCar").value;
+        var lotModel = "";
+
+        $("#loadImg").show();
+
+        $.ajax({
+            type: 'POST',
+            url:  '@Url.Action("GetLotList", "Ajax")',                                 /*"../Ajax/GetUserById",*/
+            dataType: "json",
+            data: {
+                lotYear: lotYear ,  lotMake: lotMake, lotModel: lotModel
+            },
+
+            success: function (CDlist) {
+
+                $("#ModelofCar").empty();
+
+                $("#ModelofCar").append('<option value=""> Please Select Model</option>');
+
+                for (var item = 0; item < CDlist.length; item++)
+                {
+                    //alert(CDlist[item]);
+                    $("#ModelofCar").append('<option value="' + CDlist[item] + '">' + CDlist[item] + '</option>');
+                }
+                $('#loadImg').hide();
+            },
+            error: function () {
+                alert("ajax Failed");
+            }
+        })
+    }*@
+
+
+        if (id == 2) {
+            $("#Drive1").prop("disabled", true);
+            $("#Drive2").prop("disabled", true);
+            $("#Drive1").prop("checked", false);
+            $("#Drive2").prop("checked", false);
+        }
+        else {
+            $("#Drive1").prop("disabled", false);
+            $("#Drive2").prop("disabled", false);
+        }
+    }
+</script>

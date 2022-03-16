@@ -1,0 +1,326 @@
+﻿@using CarSystem.Helping_Classes
+@using CarSystem.Models
+@using CarSystem.BL
+
+@{
+    DatabaseEntities de = new DatabaseEntities();
+    GeneralPurpose gp = new GeneralPurpose();
+    ViewBag.CDLotYearlist = new CarDetailBL().GetActiveCarDetailList(de).ToList().Select(x => x.LotYear).OrderByDescending(x => x).Distinct();
+}                                                                                            @* LotMake*@
+
+<div class="card-deck mb-3">
+    <div class="card mb-4 shadow-sm custom-padding">
+        <div class="row p-3">
+
+            <div class="col-md-6">
+                <div class="row text-center">
+                    <div class="col-md-12">
+                        <img src="~/Content/Frontassets/images/OfferForm/01.png" class="image-size" />
+                    </div>
+                    <div class="col-md-12">
+                        <img src="~/Content/Frontassets/images/car-img-03.png" class="image-size" />
+                    </div>
+                </div>
+            </div>
+            @*    Search by VIN   *@
+
+            <div class="col-md-6" style="display:none" id="showDivOfVin">
+
+                <input type="hidden" id="IsVIN" />
+
+                <div class="form-group">
+                    <label class="control-label">Search by VIN</label>
+                    <input type="text" onkeyup="searchByVin()" id="getVINnumber" class="form-control" placeholder="Search By VIN" />
+
+                    <img id="loaderForVin" src='~/Content/assets/images/loading.gif' width='40' style="position: fixed; margin-top: -2%; margin-left: -3%; display: none " />
+                    <span class="text-success" id="vinTrue"></span>   <span class="text-danger" id="vinFalse"></span>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 ">
+                        <a onclick="SelectLotYear(2)" class="btn bg-primary float-left text-white">
+                            <i class="fa fa-arrow-left" aria-hidden="true"></i> Back
+                        </a>
+                    </div>
+                    <div id="nextBtnForVin" style="display:none" class="col-md-6 col-sm-6 ">
+                        <a onclick="NextPage(1)" disabled class="float-right btn bg-primary text-white">
+                            Next <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6" id="hideThisDiv">
+                <h3 class="text-center">Get Instant Offer</h3>
+
+                <img id="loadImg" src='~/Content/assets/images/loading.gif' width='40' style=" margin-left: 5%; margin-top:-15%; display: none " />
+
+
+                <div class="form-group">
+                    <label class="control-label">Select the year (In which the vehicle is purchased)</label>
+                    <select onchange="SelectLotYear(1)" class="custom-select" name="YearofCar" id="YearofCar">
+
+                        <option selected value="">Open this select menu</option>
+
+                        <option value="SearchByVIN" style="font-weight:bold">Search By VIN</option>
+
+                        @foreach (var item in ViewBag.CDLotYearlist)
+                        {
+                            <option value="@item">@item</option>
+                        }
+
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">Select the make of car</label>
+                    <select onchange="SelectLotMake(this.value)" class="custom-select" name="MakeofCar" id="MakeofCar">
+
+                        <option value=""> </option>
+
+
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">Select the model (Specific to the company selected)</label>
+                    <select class="custom-select" name="ModelofCar" id="ModelofCar">
+
+                        <option value=""> </option>
+
+                    </select>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 col-sm-6">
+                        <a href="@Url.Action("Index","Home")" class="text-danger"><span class="angle_arrow"><i class="fa fa-arrow-left" aria-hidden="true"></i></span> Back </a>
+                    </div>
+                    <div class="col-md-6 col-sm-6 ">
+                        <a onclick="NextPage(1)" class="float-right text-danger"> Next <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
+
+
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZXUxsPREgv13fH4iD1_Nmj624kdMvhw4&callback=initAutocomplete&libraries=geometry,places&v=weekly"
+        defer>
+</script>
+
+
+<script>
+
+
+    function SelectLotYear(lotYear) {
+
+    var YearofCar = $('#YearofCar').val();
+
+        if (lotYear == 1) {
+            if (YearofCar == "SearchByVIN") {
+                $("#IsVIN").val(1);
+                searchByVin(1);
+                $("#hideThisDiv").hide();
+                $("#showDivOfVin").show();
+            }
+        }
+        if (lotYear == 2) {
+            $("#hideThisDiv").show();
+            $("#showDivOfVin").hide();
+        }
+
+        var lotMake = "";
+        var lotModel = "";
+
+
+        $("#loadImg").show();
+
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("GetLotList", "Ajax")',                                 /*"../Ajax/GetUserById",*/
+            dataType: "json",
+            data: { 
+                lotYear: YearofCar, lotMake: lotMake,  lotModel: lotModel
+            },
+
+            success: function (CDlist) {
+
+                var isvin = $("#IsVIN").val();
+                if (isvin != 1) {
+                    $("#MakeofCar").empty();
+                    $("#MakeofCar").append('<option value=""> Please Select Make</option>');
+                }
+
+
+
+
+                for (var item = 0; item < CDlist.length; item++) {
+                    //alert(CDlist[item]);
+
+                    $("#MakeofCar").append('<option value="' + CDlist[item] + '">' + CDlist[item] + '</option>');
+                }
+
+                $('#loadImg').hide();
+            },
+            error: function () {
+                alert("ajax Failed");
+            }
+        })
+
+
+
+
+}
+
+    function SelectLotMake(lotMake) {
+
+        var lotYear = document.getElementById("YearofCar").value;
+        var lotModel = "";
+
+        $("#loadImg").show();
+
+        $.ajax({
+            type: 'POST',
+            url:  '@Url.Action("GetLotList", "Ajax")',                                 /*"../Ajax/GetUserById",*/
+            dataType: "json",
+            data: {
+                lotYear: lotYear ,  lotMake: lotMake, lotModel: lotModel
+            },
+
+            success: function (CDlist) {
+                var isvin = $("#IsVIN").val();
+                if (isvin != 1) {
+                    $("#ModelofCar").empty();
+                    $("#ModelofCar").append('<option value=""> Please Select Model</option>');
+
+                }
+
+
+
+                for (var item = 0; item < CDlist.length; item++)
+                {
+                    //alert(CDlist[item]);
+                    $("#ModelofCar").append('<option value="' + CDlist[item] + '">' + CDlist[item] + '</option>');
+                }
+                $('#loadImg').hide();
+            },
+            error: function () {
+                alert("ajax Failed");
+            }
+        })
+    }
+
+
+    // search by VIN
+   // document.getElementById("vinBtnDisable").disabled = true;
+
+    //$("#vinBtnDisable").hide();
+    //$("#qaq").prop('disabled', true);
+
+    function searchByVin() {
+
+        //  1N4AL3AP4DC295509
+        //  4T1BK1EB6DU056165
+        //  KM8JM12D56U303366
+        //  5NMSH73E88H134350
+        //  1GTHK29U74E341306
+        //  JTLKT324X64085338
+        //  2HGEJ6446YH110899
+        //  JN8AS5MT2DW022816
+        //  3FADP4BJ2FM195587
+        //  1G6AF5SX6D0125409
+        var val = $("#getVINnumber").val();
+
+        if (val == null || val == "") {
+            $("#loaderForVin").hide();
+        }
+        else { $("#loaderForVin").show(); }
+
+        //$('#vinBtnDisable').attr('disabled', true);
+
+
+        if (val != null && val != "") {
+            $.ajax({
+                url: "https://vpic.nhtsa.dot.gov/api/vehicles/DecodeVINValuesBatch/",
+                type: "POST",
+                data: { format: "json", data: val },
+                dataType: "json",
+                success: function (result, status) {
+
+
+                    if (result.Results[0].ErrorCode == "0") {
+                        $("#vinFalse").text('');
+
+                        $("#vinTrue").text(result.Results[0].ModelYear + ' ' + result.Results[0].Make + ' ' + result.Results[0].Model);
+
+                        $("#YearofCar").append("<option value=" + result.Results[0].ModelYear + ">" + result.Results[0].ModelYear + "</option>")
+                        $("#YearofCar").val(result.Results[0].ModelYear).change();
+
+                        $("#MakeofCar").append("<option value=" + result.Results[0].Make + ">" + result.Results[0].Make + "</option>")
+                        $("#MakeofCar").val(result.Results[0].Make).change();
+
+                        var toUprformodel = result.Results[0].Model.toUpperCase();
+                        $("#ModelofCar").append("<option value=" + toUprformodel + ">" + toUprformodel + "</option>")
+                        $("#ModelofCar").val(toUprformodel).change();
+
+                        //$("#BodyStyleOfCar").append("<option value=" + result.Results[0].BodyClass + ">" + result.Results[0].BodyClass + "</option>")
+                        $("#BodyStyleOfCar").val(result.Results[0].BodyClass).change();
+
+                        $("#fuelType").val(result.Results[0].FuelTypePrimary).change();
+
+                        if (result.Results[0].DriveType == "4x2" || result.Results[0].DriveType == "AWD/All-Wheel Drive")
+                        { document.getElementById("frontwheel").checked = true; }
+                        else if (result.Results[0].DriveType == "4x4") { document.getElementById("fourwheel").checked = true; }
+                        else { document.getElementById("frontwheel").checked = false; document.getElementById("fourwheel").checked = false; }
+
+                        if (result.Results[0].TransmissionStyle == "Automatic") { document.getElementById("automatic").checked = true; }
+                        else if (result.Results[0].TransmissionStyle == "Manual") { document.getElementById("manual").checked = true; }
+                        else { document.getElementById("automatic").checked = false; document.getElementById("manual").checked = false; }
+
+
+
+                        $("#loaderForVin").hide();
+
+                        $("#nextBtnForVin").show();
+                        //  $('#vinBtnDisable').attr('disabled', false);
+                    } else {
+                        // NextPage(1);
+                        $("#vinTrue").text('');
+                        $("#vinFalse").text('Not Found');
+
+                        $("#loaderForVin").hide();
+                        $("#nextBtnForVin").hide();
+                    }
+
+
+
+                },
+                error: function () {
+
+                    $("#vinTrue").text('');
+                    $("#vinFalse").text('Not Found');
+
+                    $("#loaderForVin").hide();
+
+                    //console.log(xhr.status);
+                    //console.log(thrownError);
+                }
+            });
+
+        }
+    }
+
+
+
+
+
+</script>

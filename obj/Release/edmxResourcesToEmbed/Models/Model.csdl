@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CarDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LotYear" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="LotMake" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="LotModel" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="LotRunCondition" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="DamageTypeDescription" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="CopartFacilityName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="SaleTitleState" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="SaleTitleType" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="DamageType" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="LotColor" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="HasKey" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="OdometerReading" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="SalePrice" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="RepairCost" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Int32" />
+    <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Contact" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Gender" Type="Int32" />
+    <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Role" Type="Int32" />
+    <Property Name="IsActive" Type="Int32" />
+    <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityContainer Name="DatabaseEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CarDetails" EntityType="Self.CarDetail" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+  </EntityContainer>
+</Schema>

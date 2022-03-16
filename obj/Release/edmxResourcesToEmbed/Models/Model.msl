@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DatabaseModelStoreContainer" CdmEntityContainer="DatabaseEntities">
+    <EntitySetMapping Name="CarDetails">
+      <EntityTypeMapping TypeName="DatabaseModel.CarDetail">
+        <MappingFragment StoreEntitySet="CarDetail">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="LotYear" ColumnName="LotYear" />
+          <ScalarProperty Name="LotMake" ColumnName="LotMake" />
+          <ScalarProperty Name="LotModel" ColumnName="LotModel" />
+          <ScalarProperty Name="LotRunCondition" ColumnName="LotRunCondition" />
+          <ScalarProperty Name="DamageTypeDescription" ColumnName="DamageTypeDescription" />
+          <ScalarProperty Name="CopartFacilityName" ColumnName="CopartFacilityName" />
+          <ScalarProperty Name="SaleTitleState" ColumnName="SaleTitleState" />
+          <ScalarProperty Name="SaleTitleType" ColumnName="SaleTitleType" />
+          <ScalarProperty Name="DamageType" ColumnName="DamageType" />
+          <ScalarProperty Name="LotColor" ColumnName="LotColor" />
+          <ScalarProperty Name="HasKey" ColumnName="HasKey" />
+          <ScalarProperty Name="OdometerReading" ColumnName="OdometerReading" />
+          <ScalarProperty Name="SalePrice" ColumnName="SalePrice" />
+          <ScalarProperty Name="RepairCost" ColumnName="RepairCost" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="DatabaseModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Contact" ColumnName="Contact" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,107 @@
+﻿<div class="card-deck mb-3">
+    <div class="card mb-4 shadow-sm custom-padding">
+        <div class="row p-3">
+            <div class="col-md-6">
+                <div class="row text-center">
+                    <div class="col-md-12 mb-5">
+                        <img src="~/Content/Frontassets/images/OfferForm/06.png" class="image-size" />
+                    </div>
+                    <div class="col-md-12">
+                        <img src="~/Content/Frontassets/images/car-img-03.png" class="image-size" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <h3 class="text-center">Get Instant Offer</h3>
+
+                <div class="form-group">
+
+                    <label class="control-label">What's your sale price(<span class="text-danger">$</span>)? <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" onkeypress="isInputNumber(event)" id="salePrice" name="salePrice" placeholder="Your estimated price" />
+
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">What kind of sale title type do you have? <span class="text-danger">*</span></label>
+
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="cleartitle" value="Clear title" name="Title" class="custom-control-input SaleTitleTypeEmptyModalPopup">
+                        <label class="custom-control-label" for="cleartitle">Clear Title (CT)</label>
+                    </div>
+
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="salvagecertificate" value="Salvage Certificate" name="Title" class="custom-control-input SaleTitleTypeEmptyModalPopup">
+                        <label class="custom-control-label" for="salvagecertificate">Salvage Certificate (SC)</label>
+                    </div>
+
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="nonrepairable" value="Non Repairable" name="Title" class="custom-control-input SaleTitleTypeEmptyModalPopup">
+                        <label class="custom-control-label" for="nonrepairable">Non Repairable (NR)</label>
+                    </div>
+                </div>
+
+                @*<div class="form-group">
+        <label class="control-label">Any damaged mirrors, glass or lights? </label>
+        <div class="custom-control custom-radio">
+            <input type="radio" id="Mirrors1" value="The mirrors, glass or lights are intact" name="Mirrors" class="custom-control-input">
+            <label class="custom-control-label" for="Mirrors1">The mirrors, glass or lights are intact</label>
+        </div>
+
+        <div class="custom-control custom-radio">
+            <input type="radio" id="Mirrors2" value="Some mirrors, glass or lights are cracked or missing" name="Mirrors" class="custom-control-input"-->
+                    
+                
+                <label class="custom-control-label" for="Mirrors2">Some mirrors, glass or lights are cracked or missing</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">Any damaged or removed interior parts?</label>
+            <div class="custom-control custom-radio">
+                <input type="radio" id="InteriorDamage1" value="All the interior parts (seats, airbags, radio etc) are properly intact and attached" name="InteriorDamage" class="custom-control-input">
+                <label class="custom-control-label" for="InteriorDamage1">All the interior parts (seats, airbags, radio etc) are properly intact and attached</label>
+            </div>
+
+            <div class="custom-control custom-radio">
+                <input type="radio" id="InteriorDamage2" value="It has damage or removed interior parts" name="InteriorDamage" class="custom-control-input">
+                <label class="custom-control-label" for="InteriorDamage2">It has damage or removed interior parts</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">Any flood or fire damage?</label>
+            <div class="custom-control custom-radio">
+                <input type="radio" id="FireDamage1" value="It has no flood or fire damage" name="FireDamage" class="custom-control-input">
+                <label class="custom-control-label" for="FireDamage1">It has no flood or fire damage</label>
+            </div>
+
+            <div class="custom-control custom-radio">
+                <input type="radio" id="FireDamage2" value="It has flood or fire damage" name="FireDamage" class="custom-control-input">
+                <label class="custom-control-label" for="FireDamage2">It has flood or fire damage</label>
+            </div>
+        </div>*@
+
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6">
+                            <a onclick="PreviousPage(6)" class="text-danger"><span class="angle_arrow"><i class="fa fa-arrow-left" aria-hidden="true"></i></span> Back </a>
+                        </div>
+                        <div class="col-md-6 col-sm-6 ">
+                            <a id="SubmitFullForm" onclick="NextPage(6)" class="float-right text-danger"> Next <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        function isInputNumber(evt) {
+            var ch = String.fromCharCode(evt.which);
+            if (!(/[0-9\.]+/.test(ch))) {
+                evt.preventDefault();
+            }
+        }
+
+    </script>

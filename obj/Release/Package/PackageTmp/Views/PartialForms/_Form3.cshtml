@@ -1,0 +1,101 @@
+﻿<div class="card-deck mb-3">
+    <div class="card mb-4 shadow-sm custom-padding">
+        <div class="row p-3">
+            <div class="col-md-6" style="margin-top:-90px">
+                <div class="row text-center">
+                    <div class="col-md-12">
+                        <img src="~/Content/Frontassets/images/OfferForm/03.png" class="image-size" style="width:60%" />
+                    </div>
+                    @*<div class="col-md-12">
+                        <div class="mr-3 ml-3 p-2 border border-dark rounded">
+                            <p>
+                                Trim is a fancy name for the style/sub-model of your car; for instance,
+                                Honda Fits come in a Base model or Sports style. Depending on the make of your car,
+                                it may be a series of letters, such as LX. Still unsure? Give us your VIN, we'll sort it out
+                            </p>
+                        </div>
+                    </div>*@
+                    <div class="col-md-12">
+                        <img src="~/Content/Frontassets/images/car-img-03.png" class="image-size" style="width:60%" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h3 class="text-center">Get Instant Offer</h3>
+
+                @*<div class="form-group">
+            <label class="control-label">Select Trim the make of the car</label>
+            <select class="custom-select" name="MakeofCar" id="MakeofCar">
+                <option selected value="">Open this select menu</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select>
+        </div>*@
+
+                @*<div class="form-group">
+            <label class="control-label">What kind of sale title do you have?</label>
+            <div class="custom-control custom-radio">
+                <input type="radio" id="cleantitle" value="Clean title" name="Title" class="custom-control-input">
+                <label class="custom-control-label" for="cleantitle">I have a clean title</label>
+            </div>
+
+            <div class="custom-control custom-radio">
+                <input type="radio" id="salvagetitle" value="Salvage title" name="Title" class="custom-control-input">
+                <label class="custom-control-label" for="salvagetitle">I have a salvage title</label>
+            </div>
+
+            <div class="custom-control custom-radio">
+                <input type="radio" id="notitle" value="No title" name="Title" class="custom-control-input">
+                <label class="custom-control-label" for="notitle">I have no title</label>
+            </div>
+        </div>*@
+
+                <div class="form-group">
+                    <label class="control-label">Drive wheel type</label>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="frontwheel" value="Front Wheel Drive" name="DriveWheel" class="custom-control-input">
+                        <label class="custom-control-label" for="frontwheel">Front Wheel Drive or 4x2</label>
+                    </div>
+
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="allwheel" value="All Wheell Drive" name="DriveWheel" class="custom-control-input">
+                        <label class="custom-control-label" for="allwheel">All Wheell Drive</label>
+                    </div>
+
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="fourwheel" value="Four Wheel Drive or 4x4" name="DriveWheel" class="custom-control-input">
+                        <label class="custom-control-label" for="fourwheel">Four Wheel Drive or 4x4</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    <label class="control-label">Engine Size (In litres) <i class="cke_required btn-outline-danger"></i></label>
+                    <input type="text" class="form-control" onkeypress="isInputNumber(event)" id="engineSize" name="engineSize" placeholder="e.g 1.6" />
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 col-sm-6">
+                        <a onclick="PreviousPage(3)" class="text-danger"><span class="angle_arrow"><i class="fa fa-arrow-left" aria-hidden="true"></i></span> Back </a>
+                    </div>
+                    <div class="col-md-6 col-sm-6 ">
+                        <a id="SubmitHalfForm" onclick="NextPage(3)" class="float-right text-danger"> Next <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    function isInputNumber(evt) {
+        var ch = String.fromCharCode(evt.which);
+        if (!(/[0-9\.]+/.test(ch))) {
+            evt.preventDefault();
+        }
+    }
+
+</script>

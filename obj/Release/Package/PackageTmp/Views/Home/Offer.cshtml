@@ -1,0 +1,794 @@
+﻿@{
+    ViewBag.Title = "About";
+    Layout = null;
+}
+
+
+
+
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/475c845684.js" crossorigin="anonymous"></script>
+
+    <title>Sell Your Car Instantly</title>
+    <style>
+        .custom-padding {
+            padding: 70px 0;
+        }
+
+        .form-group {
+            margin: 25px 0;
+        }
+
+        a {
+            cursor: pointer;
+        }
+
+        .custom-radio {
+            margin: 20px 0;
+        }
+
+        .car-heading {
+            background-color: #EDEDED;
+            font-size: 10px;
+        }
+
+        .control-label {
+            font-weight: 600;
+        }
+
+        .image-size {
+            width: 60%;
+            padding: 20px 0;
+        }
+
+        .custom-heading {
+            font-size: 32px;
+            line-height: 40px;
+        }
+    </style>
+</head>
+<body style="background:#e2e2e2">
+
+    <div class="d-flex flex-column flex-md-row align-items-center px-md-4 mb-3 bg-white border-bottom shadow-sm">
+        <h5 class="my-0 mr-md-auto font-weight-normal">Company name</h5>
+        <nav class="navbar navbar-expand-lg navbar-light bg-lightx">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <ul class="nav justify-content-end">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                        Support
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Chat with Us</a>
+                        <a class="dropdown-item" href="#">Help Center</a>
+                        <a class="dropdown-item" href="#">Facebook</a>
+                        <a class="dropdown-item" href="#">Twitter</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("Login","Auth")">Login</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+
+                                                             @* Getting from form-1  *@
+    <input type="text" value="@ViewBag.lotMakeVal" hidden />
+    <input type="text" value="@ViewBag.lotYearVal" hidden />
+    <input type="text" value="@ViewBag.lotModelVal" hidden />
+                                                            @* Getting from form-2  *@
+    <input type="text" value="@ViewBag.ZipCodeAddress" hidden />
+
+
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <form method="post" action="@Url.Action("SubmitForm","Home")" id="myform">
+                    <div id="FormPartial1" style="display:block">
+                        @{
+                            Html.RenderPartial("../PartialForms/_Form1");
+
+                        }
+                    </div>
+
+                    <div id="FormPartial2" style="display: none">
+                        @{
+                            Html.RenderPartial("../PartialForms/_Form2");
+                        }
+                    </div>
+
+                    <div id="FormPartial3" style="display: none ">
+                        @{
+                            Html.RenderPartial("../PartialForms/_Form3");
+                        }
+                    </div>
+
+                    <div id="FormPartial4" style="display: none ">
+                        @{
+                            Html.RenderPartial("../PartialForms/_Form4");
+
+                        }
+                    </div>
+
+                    <div id="FormPartial5" style="display: none">
+                        @{
+                            Html.RenderPartial("../PartialForms/_Form5");
+                        }
+                    </div>
+
+                    <div id="FormPartial6" style="display: none">
+                        @{
+                            Html.RenderPartial("../PartialForms/_Form6");
+                        }
+                    </div>
+
+                    <div id="FormPartial7" style="display: none">
+                        @{
+                            Html.RenderPartial("../PartialForms/_Form7");
+                        }
+                    </div>
+
+                    <div id="FormPartial8" style="display: none">
+                        @{
+                            Html.RenderPartial("../PartialForms/_Form8");
+                        }
+                    </div>
+
+                    <div id="FormPartial9" style="display: none">
+                        @{
+                            Html.RenderPartial("../PartialForms/_Form9");
+                        }
+                    </div>
+
+                    <div id="FormPartial10" style="display: none">
+                        @{
+                            Html.RenderPartial("../PartialForms/_Form10");
+                        }
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+        function NextPage(id) {
+            var Fp1 = document.getElementById('FormPartial1');
+            var Fp2 = document.getElementById('FormPartial2');
+            var Fp3 = document.getElementById('FormPartial3');
+            var Fp4 = document.getElementById('FormPartial4');
+            var Fp5 = document.getElementById('FormPartial5');
+            var Fp6 = document.getElementById('FormPartial6');
+            var Fp7 = document.getElementById('FormPartial7');
+            var Fp8 = document.getElementById('FormPartial8');
+            var Fp9 = document.getElementById('FormPartial9');
+            var Fp10 = document.getElementById('FormPartial10');
+
+            if (id == 1) {
+                if (Fp1.style.display === 'block' || Fp10.style.display === 'block') {
+                        Fp1.style.display = 'none';
+                        Fp2.style.display = 'block';
+                        Fp3.style.display = 'none';
+                        Fp4.style.display = 'none';
+                        Fp5.style.display = 'none';
+                        Fp6.style.display = 'none';
+                        Fp7.style.display = 'none';
+                        Fp8.style.display = 'none';
+                        Fp9.style.display = 'none';
+                        Fp10.style.display = 'none';
+                    }
+
+            }
+
+            if (id == 2) {
+                var ZipCode = document.getElementById('ZipCode').value;
+                var Mountedtires = document.getElementsByName('Mountedtires');
+                if (ZipCode == "") {
+                    alert("Enter Zip Code");
+                }
+                else {
+                    if (Fp2.style.display === 'block' || Fp10.style.display === 'block') {
+                        Fp2.style.display = 'none';
+                        Fp3.style.display = 'block';
+                        Fp1.style.display = 'none';
+                        Fp4.style.display = 'none';
+                        Fp5.style.display = 'none';
+                        Fp6.style.display = 'none';
+                        Fp7.style.display = 'none';
+                        Fp8.style.display = 'none';
+                        Fp9.style.display = 'none';
+                        Fp10.style.display = 'none';
+                    }
+                }
+            }
+
+            if (id == 3) {
+                if (Fp3.style.display === 'block' || Fp10.style.display === 'block') {
+                    Fp3.style.display = 'none';
+                    Fp4.style.display = 'block';
+                    Fp1.style.display = 'none';
+                    Fp2.style.display = 'none';
+                    Fp5.style.display = 'none';
+                    Fp6.style.display = 'none';
+                    Fp7.style.display = 'none';
+                    Fp8.style.display = 'none';
+                    Fp9.style.display = 'none';
+                    Fp10.style.display = 'none';
+                }
+            }
+
+            if (id == 4) {
+                if (Fp4.style.display === 'block' || Fp10.style.display === 'block') {
+                    Fp4.style.display = 'none';
+                    Fp5.style.display = 'block';
+                    Fp1.style.display = 'none';
+                    Fp2.style.display = 'none';
+                    Fp3.style.display = 'none';
+                    Fp6.style.display = 'none';
+                    Fp7.style.display = 'none';
+                    Fp8.style.display = 'none';
+                    Fp9.style.display = 'none';
+                    Fp10.style.display = 'none';
+                }
+            }
+
+            if (id == 5) {
+                if (Fp5.style.display === 'block' || Fp10.style.display === 'block') {
+                    Fp5.style.display = 'none';
+                    Fp6.style.display = 'block';
+                    Fp1.style.display = 'none';
+                    Fp2.style.display = 'none';
+                    Fp3.style.display = 'none';
+                    Fp4.style.display = 'none';
+                    Fp7.style.display = 'none';
+                    Fp8.style.display = 'none';
+                    Fp9.style.display = 'none';
+                    Fp10.style.display = 'none';
+                }
+            }
+
+            if (id == 6) {
+                if (Fp6.style.display === 'block') {
+                    Fp6.style.display = 'none';
+                    Fp7.style.display = 'block';
+                    Fp1.style.display = 'none';
+                    Fp2.style.display = 'none';
+                    Fp3.style.display = 'none';
+                    Fp4.style.display = 'none';
+                    Fp5.style.display = 'none';
+                    Fp8.style.display = 'none';
+                    Fp9.style.display = 'none';
+                    Fp10.style.display = 'none';
+                }
+            }
+
+            if (id == 7) {
+                if (Fp7.style.display === 'block') {
+                    Fp7.style.display = 'none';
+                    Fp10.style.display = 'block';
+                    Fp1.style.display = 'none';
+                    Fp2.style.display = 'none';
+                    Fp3.style.display = 'none';
+                    Fp4.style.display = 'none';
+                    Fp5.style.display = 'none';
+                    Fp6.style.display = 'none';
+                    Fp8.style.display = 'none';
+                    Fp9.style.display = 'none';
+                }
+            }
+
+            if (id == 10) {
+                if (Fp10.style.display === 'block') {
+                    Fp10.style.display = 'none';
+                    Fp8.style.display = 'block';
+                    Fp1.style.display = 'none';
+                    Fp2.style.display = 'none';
+                    Fp3.style.display = 'none';
+                    Fp4.style.display = 'none';
+                    Fp5.style.display = 'none';
+                    Fp6.style.display = 'none';
+                    Fp7.style.display = 'none';
+                    Fp9.style.display = 'none';
+                }
+            }
+
+            if (id == 8) {
+                if (Fp8.style.display === 'block') {
+                    Fp8.style.display = 'none';
+                    Fp9.style.display = 'block';
+                    Fp1.style.display = 'none';
+                    Fp2.style.display = 'none';
+                    Fp3.style.display = 'none';
+                    Fp4.style.display = 'none';
+                    Fp5.style.display = 'none';
+                    Fp6.style.display = 'none';
+                    Fp7.style.display = 'none';
+                    Fp10.style.display = 'none';
+                }
+            }
+            
+        }
+
+        function Checked(id) {
+            if (id != "") {
+                var e = document.getElementById(id);
+                var c = window.getComputedStyle(e).backgroundColor;
+                                                                        //     form   2
+                if (id == "demo") {
+                    var x = document.getElementById('DriverFront').value;
+                    if (c === "rgba(219, 92, 92, 0.7)") {
+                        document.getElementById(id).style.background = "#fff";
+                        $('#DriverFront').val('');
+                    } else {
+                        document.getElementById(id).style.background = "rgba(219, 92, 92, 0.7)";
+                        $('#DriverFront').val('Driver Front');
+                    }
+                }
+
+                if (id == "demo1") {
+                    var x = document.getElementById('PassengerFront').value;
+                    if (c === "rgba(219, 92, 92, 0.7)") {
+                        document.getElementById(id).style.background = "#fff";
+                        $('#PassengerFront').val('');
+                    } else {
+                        document.getElementById(id).style.background = "rgba(219, 92, 92, 0.7)";
+                        $('#PassengerFront').val('Passenger Front');
+                    }
+                }
+
+                if (id == "demo2") {
+                    var x = document.getElementById('DriverRear').value;
+                    if (c === "rgba(219, 92, 92, 0.7)") {
+                        document.getElementById(id).style.background = "#fff";
+                        $('#DriverRear').val('');
+                    } else {
+                        document.getElementById(id).style.background = "rgba(219, 92, 92, 0.7)";
+                        $('#DriverRear').val('Driver Rear');
+                    }
+                }
+
+                if (id == "demo3") {
+                    var x = document.getElementById('PassengerRear').value;
+                    if (c === "rgba(219, 92, 92, 0.7)") {
+                        document.getElementById(id).style.background = "#fff";
+                        $('#PassengerRear').val('');
+                    } else {
+                        document.getElementById(id).style.background = "rgba(219, 92, 92, 0.7)";
+                        $('#PassengerRear').val('Passenger Rear');
+                    }
+                }
+
+                if (id == "demo4") {
+                    var x = document.getElementById('WheelsDriverFront').value;
+                    if (c === "rgba(219, 92, 92, 0.7)") {
+                        document.getElementById(id).style.background = "#fff";
+                        $('#WheelsDriverFront').val('');
+                    } else {
+                        document.getElementById(id).style.background = "rgba(219, 92, 92, 0.7)";
+                        $('#WheelsDriverFront').val('Wheels Driver Front');
+                    }
+                }
+
+                if (id == "demo5") {
+                    var x = document.getElementById('WheelsPassengerFront').value;
+                    if (c === "rgba(219, 92, 92, 0.7)") {
+                        document.getElementById(id).style.background = "#fff";
+                        $('#WheelsPassengerFront').val('');
+                    } else {
+                        document.getElementById(id).style.background = "rgba(219, 92, 92, 0.7)";
+                        $('#WheelsPassengerFront').val('Wheels Passenger Front');
+                    }
+                }
+
+                if (id == "demo6") {
+                    var x = document.getElementById('WheelsDriverRear').value;
+                    if (c === "rgba(219, 92, 92, 0.7)") {
+                        document.getElementById(id).style.background = "#fff";
+                        $('#WheelsDriverRear').val('');
+                    } else {
+                        document.getElementById(id).style.background = "rgba(219, 92, 92, 0.7)";
+                        $('#WheelsDriverRear').val('Wheels Driver Rear');
+                    }
+                }
+
+                if (id == "demo7") {
+                    var x = document.getElementById('WheelsPassengerRear').value;
+                    if (c === "rgba(219, 92, 92, 0.7)") {
+                        document.getElementById(id).style.background = "#fff";
+                        $('#WheelsPassengerRear').val('');
+                    } else {
+                        document.getElementById(id).style.background = "rgba(219, 92, 92, 0.7)";
+                        $('#WheelsPassengerRear').val('Wheels Passenger Rear');
+                    }
+                }
+                                                  //          form   5     Primary Damage
+                if (id == "demo8") {
+                    var x = document.getElementById('PrimaryDamageDriverFront').value;
+                    if (c === "rgba(219, 92, 92, 0.7)") {
+                        document.getElementById(id).style.background = "#fff";
+                        $('#PrimaryDamageDriverFront').val('');
+                    } else {
+                        document.getElementById(id).style.background = "rgba(219, 92, 92, 0.7)";
+                        $('#PrimaryDamageDriverFront').val('Primary Damage Driver Front');
+                    }
+                }
+
+                if (id == "demo9") {
+                    var x = document.getElementById('PrimaryDamagePassengerFront').value;
+                    if (c === "rgba(219, 92, 92, 0.7)") {
+                        document.getElementById(id).style.background = "#fff";
+                        $('#PrimaryDamagePassengerFront').val('');
+                    } else {
+                        document.getElementById(id).style.background = "rgba(219, 92, 92, 0.7)";
+                        $('#PrimaryDamagePassengerFront').val('Primary Damage Passenger Front');
+                    }
+                }
+
+                if (id == "demo10") {
+                    var x = document.getElementById('PrimaryDamageDriverRear').value;
+                    if (c === "rgba(219, 92, 92, 0.7)") {
+                        document.getElementById(id).style.background = "#fff";
+                        $('#PrimaryDamageDriverRear').val('');
+                    } else {
+                        document.getElementById(id).style.background = "rgba(219, 92, 92, 0.7)";
+                        $('#PrimaryDamageDriverRear').val('Primary Damage Driver Rear');
+                    }
+                }
+
+                if (id == "demo11") {
+                    var x = document.getElementById('PrimaryDamagePassengerRear').value;
+                    if (c === "rgba(219, 92, 92, 0.7)") {
+                        document.getElementById(id).style.background = "#fff";
+                        $('#PrimaryDamagePassengerRear').val('');
+                    } else {
+                        document.getElementById(id).style.background = "rgba(219, 92, 92, 0.7)";
+                        $('#PrimaryDamagePassengerRear').val('Primary Damage Passenger Rear');
+                    }
+                }
+                                                  //     Primary Damage End 
+                if (id == "demo12") {
+                    var x = document.getElementById('DamagedBaseballSizeDriverFront').value;
+                    if (c === "rgba(219, 92, 92, 0.7)") {
+                        document.getElementById(id).style.background = "#fff";
+                        $('#DamagedBaseballSizeDriverFront').val('');
+                    } else {
+                        document.getElementById(id).style.background = "rgba(219, 92, 92, 0.7)";
+                        $('#DamagedBaseballSizeDriverFront').val('Damaged Baseball Size Driver Front');
+                    }
+                }
+
+                if (id == "demo13") {
+                    var x = document.getElementById('DamagedBaseballSizePassengerFront').value;
+                    if (c === "rgba(219, 92, 92, 0.7)") {
+                        document.getElementById(id).style.background = "#fff";
+                        $('#DamagedBaseballSizePassengerFront').val('');
+                    } else {
+                        document.getElementById(id).style.background = "rgba(219, 92, 92, 0.7)";
+                        $('#DamagedBaseballSizePassengerFront').val('Damaged Baseball Size Passenger Front');
+                    }
+                }
+
+                if (id == "demo14") {
+                    var x = document.getElementById('DamagedBaseballSizeDriverRear').value;
+                    if (c === "rgba(219, 92, 92, 0.7)") {
+                        document.getElementById(id).style.background = "#fff";
+                        $('#DamagedBaseballSizeDriverRear').val('');
+                    } else {
+                        document.getElementById(id).style.background = "rgba(219, 92, 92, 0.7)";
+                        $('#DamagedBaseballSizeDriverRear').val('Damaged Baseball Size Driver Rear');
+                    }
+                }
+
+                if (id == "demo15") {
+                    var x = document.getElementById('DamagedBaseballSizePassengerRear').value;
+                    if (c === "rgba(219, 92, 92, 0.7)") {
+                        document.getElementById(id).style.background = "#fff";
+                        $('#DamagedBaseballSizePassengerRear').val('');
+                    } else {
+                        document.getElementById(id).style.background = "rgba(219, 92, 92, 0.7)";
+                        $('#DamagedBaseballSizePassengerRear').val('Damaged Baseball Size Passenger Rear');
+                    }
+                }
+            }
+        }
+
+        function PreviousPage(id) {
+            var Fp1 = document.getElementById('FormPartial1');
+            var Fp2 = document.getElementById('FormPartial2');
+            var Fp3 = document.getElementById('FormPartial3');
+            var Fp4 = document.getElementById('FormPartial4');
+            var Fp5 = document.getElementById('FormPartial5');
+            var Fp6 = document.getElementById('FormPartial6');
+            var Fp7 = document.getElementById('FormPartial7');
+            var Fp8 = document.getElementById('FormPartial8');
+            var Fp9 = document.getElementById('FormPartial9');
+            var Fp10 = document.getElementById('FormPartial10');
+
+            if (id == 2) {
+                if (Fp2.style.display === 'block' || Fp10.style.display === 'block') {
+                    Fp2.style.display = 'none';
+                    Fp10.style.display = 'none';
+                    Fp1.style.display = 'block';
+                    Fp3.style.display = 'none';
+                    Fp4.style.display = 'none';
+                    Fp5.style.display = 'none';
+                    Fp6.style.display = 'none';
+                    Fp7.style.display = 'none';
+                    Fp8.style.display = 'none';
+                    Fp9.style.display = 'none';
+
+                }
+            }
+            if (id == 3) {
+                if (Fp3.style.display === 'block') {
+                    Fp3.style.display = 'none';
+                    Fp2.style.display = 'block';
+                    Fp1.style.display = 'none';
+                    Fp4.style.display = 'none';
+                    Fp5.style.display = 'none';
+                    Fp6.style.display = 'none';
+                    Fp7.style.display = 'none';
+                    Fp8.style.display = 'none';
+                    Fp9.style.display = 'none';
+                    Fp10.style.display = 'none';
+
+                }
+            }
+            if (id == 4) {
+                if (Fp4.style.display === 'block') {
+                    Fp4.style.display = 'none';
+                    Fp3.style.display = 'block';
+                    Fp1.style.display = 'none';
+                    Fp2.style.display = 'none';
+                    Fp5.style.display = 'none';
+                    Fp6.style.display = 'none';
+                    Fp7.style.display = 'none';
+                    Fp8.style.display = 'none';
+                    Fp9.style.display = 'none';
+                    Fp10.style.display = 'none';
+
+                }
+            }
+            if (id == 5) {
+                if (Fp5.style.display === 'block') {
+                    Fp5.style.display = 'none';
+                    Fp4.style.display = 'block';
+                    Fp1.style.display = 'none';
+                    Fp2.style.display = 'none';
+                    Fp3.style.display = 'none';
+                    Fp6.style.display = 'none';
+                    Fp7.style.display = 'none';
+                    Fp8.style.display = 'none';
+                    Fp9.style.display = 'none';
+                    Fp10.style.display = 'none';
+
+                }
+            }
+            if (id == 6) {
+                if (Fp6.style.display === 'block') {
+                    Fp6.style.display = 'none';
+                    Fp5.style.display = 'block';
+                    Fp1.style.display = 'none';
+                    Fp2.style.display = 'none';
+                    Fp3.style.display = 'none';
+                    Fp4.style.display = 'none';
+                    Fp7.style.display = 'none';
+                    Fp8.style.display = 'none';
+                    Fp9.style.display = 'none';
+                    Fp10.style.display = 'none';
+
+                }
+            }
+            if (id == 7) {
+                if (Fp7.style.display === 'block') {
+                    Fp7.style.display = 'none';
+                    Fp6.style.display = 'block';
+                    Fp1.style.display = 'none';
+                    Fp2.style.display = 'none';
+                    Fp3.style.display = 'none';
+                    Fp4.style.display = 'none';
+                    Fp5.style.display = 'none';
+                    Fp8.style.display = 'none';
+                    Fp9.style.display = 'none';
+                    Fp10.style.display = 'none';
+                }
+            }
+            if (id == 10) {
+                if (Fp10.style.display === 'block') {
+                    Fp10.style.display = 'none';
+                    Fp7.style.display = 'block';
+                    Fp1.style.display = 'none';
+                    Fp2.style.display = 'none';
+                    Fp3.style.display = 'none';
+                    Fp4.style.display = 'none';
+                    Fp5.style.display = 'none';
+                    Fp6.style.display = 'none';
+                    Fp8.style.display = 'none';
+                    Fp9.style.display = 'none';
+                }
+            }
+            if (id == 8) {
+                if (Fp8.style.display === 'block') {
+                    Fp8.style.display = 'none';
+                    Fp10.style.display = 'block';
+                    Fp1.style.display = 'none';
+                    Fp2.style.display = 'none';
+                    Fp3.style.display = 'none';
+                    Fp4.style.display = 'none';
+                    Fp5.style.display = 'none';
+                    Fp6.style.display = 'none';
+                    Fp7.style.display = 'none';
+                    Fp9.style.display = 'none';
+                }
+            }
+            if (id == 9) {
+                if (Fp9.style.display === 'block') {
+                    Fp9.style.display = 'none';
+                    Fp8.style.display = 'block';
+                    Fp1.style.display = 'none';
+                    Fp2.style.display = 'none';
+                    Fp3.style.display = 'none';
+                    Fp4.style.display = 'none';
+                    Fp5.style.display = 'none';
+                    Fp6.style.display = 'none';
+                    Fp7.style.display = 'none';
+                    Fp10.style.display = 'none';
+                }
+            }
+            
+        }
+
+    </script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#SubmitFullForm").click(function () {
+                //let fd = $("#myform").serialize();
+
+                                                             //     1    complete
+                var a = $('#YearofCar').val();
+                var b = $('#MakeofCar').val();
+                var c = $('#ModelofCar').val();
+
+                                                            //    2   complete
+                var d = $('#ZipCode').val();
+
+                var BodyStyleOfCar = $('#BodyStyleOfCar').val();
+
+
+                                                            //     3  Complete  
+                var frontwheel = $('#frontwheel').val();
+                var allwheel = $('#allwheel').val();
+                var fourwheel = $('#fourwheel').val();
+                var driveWheel = "";
+                if ($('#frontwheel').prop("checked") == true) { driveWheel = frontwheel; }
+                else if ($('#allwheel').prop("checked") == true) { driveWheel = allwheel; }
+                else if ($('#fourwheel').prop("checked") == true) { driveWheel = fourwheel; }
+
+                var engineSize = $('#engineSize').val();
+
+                                                                 //      4    complete
+
+                var automatic = $('#automatic').val();
+                var manual = $('#manual').val();
+                var transmission = "";
+                if ($('#automatic').prop("checked") == true) { transmission = automatic ; }
+                else if ($('#manual').prop("checked") == true) { transmission = manual; }
+
+                var fuelType = $('#fuelType').val();
+                
+                                                               //     5   Complete
+                var Odometer = $('#Odometer').val();
+
+                var PrimaryDamage1 = $('#PrimaryDamage1').val();
+                var PrimaryDamage2 = $('#PrimaryDamage2').val();
+                const PrimaryDamage = [];
+
+                if ($('#PrimaryDamage1').prop("checked") == true) { PrimaryDamage.push(PrimaryDamage1) ; }
+                else if ($('#PrimaryDamage2').prop("checked") == true)
+                {
+                    var PrimaryDamage3 = $('#PrimaryDamageDriverFront').val();
+                    var PrimaryDamage4 = $('#PrimaryDamagePassengerFront').val();
+                    var PrimaryDamage5 = $('#PrimaryDamageDriverRear').val();
+                    var PrimaryDamage6 = $('#PrimaryDamagePassengerRear').val();
+
+                    PrimaryDamage.push(PrimaryDamage3);
+                    PrimaryDamage.push(PrimaryDamage4);
+                    PrimaryDamage.push(PrimaryDamage5);
+                    PrimaryDamage.push(PrimaryDamage6);
+                }
+
+
+                                                               //     6   
+                var salePrice = $('#salePrice').val();
+
+                var cleartitle = $('#cleartitle').val();
+                var salvagecertificate = $('#salvagecertificate').val();
+                var nonrepairable = $('#nonrepairable').val();
+                var titleType = "";
+                if ($('#cleartitle').prop("checked") == true) { titleType = cleartitle; }
+                else if ($('#salvagecertificate').prop("checked") == true) { titleType = salvagecertificate; }
+                else if ($('#nonrepairable').prop("checked") == true) { titleType = nonrepairable; }
+
+
+
+                // loader to show on form-7
+                $("#loadNameAndPrice").show();
+
+                $.ajax({
+                    type: 'POST',
+                    url:  '@Url.Action("SubmitFullForm", "Ajax")',                                 /*"../Ajax/GetUserById",*/
+                    dataType: "json",
+                    data: {
+                        //   1
+                        LotYear : a,                                               // dropdown
+                        LotMake : b,                                               // dropdown
+                        LotModel: c,                                               // dropdown
+
+                        //   2
+                        ZipCode : d,
+                        BodyStyleOfCar: BodyStyleOfCar,                            // dropdown
+
+                        //   3
+                        DriveWheel : driveWheel,                      // checkbox
+                        EngineSize : engineSize,                      // input
+
+                        //   4
+                        Transmission : transmission,                  // checkbox
+                        FuelType: fuelType,                           // dropdown
+
+                        //   5
+                        OdometerReading : Odometer,                   // input
+
+                        PrimaryDamage : PrimaryDamage,                //  modal values
+
+                        // 6
+                        SalePrice: salePrice,                         // input
+
+                        TitleType: titleType                          // input
+
+                    },
+
+
+                    dataType: "json",
+
+                    success: function (cdDTO) {
+
+                        $('#showYearMakeModel').text(cdDTO.Name);
+
+                        $('#showPrice').text(cdDTO.GetSalePrice);
+
+                        $("#loadNameAndPrice").hide();
+                    },
+                }); // Submit the form
+            });
+        });
+
+
+    </script>
+</body>
+</html>
+
